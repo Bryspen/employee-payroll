@@ -8,26 +8,40 @@ const collectEmployees = function() {
   while (true) {
     const firstName = prompt("Enter first name:");
     const lastName = prompt("Enter last name:");
-    const salary = prompt("Enter salary:");
-    employeesArray.push({firstName, lastName, salary});
+    let salary = parseFloat(prompt("Enter salary:"));
     Addnew = confirm("Would you like to add another Employee?");
+
+    if (isNaN(salary)) {
+       salary= 0;
+    }
+   
+    employeesArray.push({firstName, lastName, salary});
     
     if (Addnew === false || Addnew === null) {
       break;
-
     }
   }
+  console.log(employeesArray);
   return employeesArray;
-  // TODO: Get user input to create and return an array of employee objects
 }
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+  let totalSalary = 0;
+
+  for (let i = 0; i < employeesArray.length; i++) {
+    const currentEmployee = employeesArray[i];
+    totalSalary += currentEmployee.salary;
+  }
+    const averageSalary = totalSalary / employeesArray.length;
+    console.log("This is the Average Salary:" , averageSalary);
+  
+ 
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
+
   // TODO: Select and display a random employee
 }
 
